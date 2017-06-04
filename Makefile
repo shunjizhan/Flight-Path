@@ -3,7 +3,7 @@ CXX=clang++
 
 all:
 	$(MAKE) clean
-	$(MAKE) test1
+	$(MAKE) test2
 
 run: Main.o
 	${CXX} Main.o -o flightPath

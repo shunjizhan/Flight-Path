@@ -96,32 +96,43 @@ public:
 
   void findPath() {
     srand (time(NULL));
-    double r1, r2;
+    double r1_rand, r2_rand, medianDist;
+    Line path;
+    double MinmedianDist = 999999999;
     Point p1, p2;
-    r1 = rand() % n;
-    r2 = rand() % n;
-    while(r2 == r1) { r2 = rand() % n; }
-    p1 = allPoints[r1];
-    p2 = allPoints[r2];
 
-    p1.print();
-    p2.print();
+    for (int k = 0; k < n; k++) {
+      r1_rand = rand() % n;
+      r2_rand = rand() % n;
+      while(r2_rand == r1_rand) { r2_rand = rand() % n; }
+      p1 = allPoints[r1_rand];
+      p2 = allPoints[r2_rand];
 
-    Line line(p1, p2);
-    line.print();
+      // p1.print();
+      // p2.print();
 
-    vector<double> allDistances;
-    for (int i = 0; i < n; i++) {
-      allDistances.push_back(distance(allPoints[i], line));
+      Line line(p1, p2);
+      // line.print();
+
+      vector<double> allDistances;
+      for (int i = 0; i < n; i++) {
+        allDistances.push_back(distance(allPoints[i], line));
+      }
+
+      // for (int i = 0; i < n; i++) {
+      //   cout << allDistances[i] << " ";
+      // }
+      // cout << endl;
+
+      medianDist = findMedianDist(allDistances);
+      if (medianDist < MinmedianDist) {
+        MinmedianDist = medianDist;
+        path = line;
+      }
     }
 
-    // for (int i = 0; i < n; i++) {
-    //   cout << allDistances[i] << " ";
-    // }
-    // cout << endl;
-
-    double medianDist = findMedianDist(allDistances);
-    cout << medianDist << endl;
+    cout << "MinmedianDist = " << MinmedianDist << endl;
+    path.print();
 
   }
 
