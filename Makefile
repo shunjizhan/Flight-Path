@@ -12,6 +12,10 @@ test1: Main.o
 	${CXX} Main.o -o flightPath
 	./flightPath < tests/input_noNoise.txt
 
+test2: Main.o
+	${CXX} Main.o -o flightPath
+	./flightPath < tests/input_big_noNoise.txt
+
 clean:
 	/bin/rm -f *.o flightPath
 

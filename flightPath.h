@@ -74,6 +74,17 @@ public:
     }
   }
 
+  double distance(Point p, Line line) {
+    double a, b, c, x, y;
+    a = line.a;
+    b = -1.0;
+    c = line.b;
+    x = p.x;
+    y = p.y;
+
+    return abs(a * x + b * y + c) / sqrt(a * a + b * b);
+  }
+
   void findPath() {
     srand (time(NULL));
     double r1, r2;
@@ -89,6 +100,11 @@ public:
 
     Line line(p1, p2);
     line.print();
+
+    double d1 = distance(p1, line);
+    double d2 = distance(p2, line);
+
+    cout << d1 << " " << d2 << endl;
 
   }
 
