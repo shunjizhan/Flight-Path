@@ -22,7 +22,7 @@ int main() {
     // cout << X << " " << Y << endl;
     f.addPoint(X, Y);
   }
-  f.printPoints();
+  // f.printPoints();
 
   f.findPath();
 

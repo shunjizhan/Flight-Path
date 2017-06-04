@@ -22,6 +22,23 @@ struct Point {
   }
 };
 
+struct Line {
+  double a, b;
+  Line() {
+    a = 0;
+    b = 0;
+  }
+
+  Line(double a, double b) {
+    this->a = a;
+    this->b = b;
+  }
+
+  void print() {
+    cout << "a = " << a << ", b = " << b << endl;
+  }
+};
+
 class FlightPath {
 public:
   int n;
@@ -47,6 +64,17 @@ public:
   }
 
   void findPath() {
+    srand (time(NULL));
+    double r1, r2;
+    Point p1, p2;
+    r1 = rand() % n;
+    r2 = rand() % n;
+    while(r2 == r1) { r2 = rand() % n; }
+    p1 = allPoints[r1];
+    p2 = allPoints[r2];
+
+    p1.print();
+    p2.print();
 
   }
 
