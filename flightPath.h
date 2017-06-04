@@ -34,6 +34,17 @@ struct Line {
     this->b = b;
   }
 
+  Line(Point p1, Point p2) {
+    double x1, x2, y1, y2;
+    x1 = p1.x;
+    x2 = p2.x;
+    y1 = p1.y;
+    y2 = p2.y;
+
+    a = (y1 - y2) / (x1 - x2);
+    b = y1 - a * x1;
+  }
+
   void print() {
     cout << "a = " << a << ", b = " << b << endl;
   }
@@ -75,6 +86,9 @@ public:
 
     p1.print();
     p2.print();
+
+    Line line(p1, p2);
+    line.print();
 
   }
 
