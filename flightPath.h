@@ -69,7 +69,7 @@ public:
   }
 
   void printPoints() {
-    for (int i = 0; i < allPoints.size(); i++) {
+    for (int i = 0; i < n; i++) {
       allPoints[i].print();
     }
   }
@@ -83,6 +83,15 @@ public:
     y = p.y;
 
     return abs(a * x + b * y + c) / sqrt(a * a + b * b);
+  }
+
+  double findMedianDist(vector<double> allDistances) {
+    sort(allDistances.begin(), allDistances.end());
+    if (n % 2 == 0) {
+      return (allDistances[n / 2 - 1] + allDistances[n / 2]) / 2;
+    } else {
+      return allDistances[n / 2];
+    }
   }
 
   void findPath() {
@@ -101,10 +110,18 @@ public:
     Line line(p1, p2);
     line.print();
 
-    double d1 = distance(p1, line);
-    double d2 = distance(p2, line);
+    vector<double> allDistances;
+    for (int i = 0; i < n; i++) {
+      allDistances.push_back(distance(allPoints[i], line));
+    }
 
-    cout << d1 << " " << d2 << endl;
+    // for (int i = 0; i < n; i++) {
+    //   cout << allDistances[i] << " ";
+    // }
+    // cout << endl;
+
+    double medianDist = findMedianDist(allDistances);
+    cout << medianDist << endl;
 
   }
 
