@@ -100,8 +100,20 @@ public:
     Line path;
     double MinmedianDist = 999999999;
     Point p1, p2;
+    int N;
+    if (n < 30) {
+      N = n * n;
+    } else if (n < 100) {
+      N = n * n / 10;
+    } else if (n < 1000) {
+      N = n;
+    } else if (n < 5000) {
+      N = n / 5;
+    } else {
+      N = n / 10;
+    }
 
-    for (int k = 0; k < n; k++) {
+    for (int k = 0; k < N; k++) {
       r1_rand = rand() % n;
       r2_rand = rand() % n;
       while(r2_rand == r1_rand) { r2_rand = rand() % n; }
