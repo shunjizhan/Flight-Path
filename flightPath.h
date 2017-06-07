@@ -101,7 +101,7 @@ public:
     double MinmedianDist = 999999999;
     Point p1, p2;
 
-    for (int k = 0; k < n; k++) {
+    for (int k = 0; k < n * 2; k++) {
       r1_rand = rand() % n;
       r2_rand = rand() % n;
       while(r2_rand == r1_rand) { r2_rand = rand() % n; }
